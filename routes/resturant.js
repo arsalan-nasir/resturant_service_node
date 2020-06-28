@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Resturant = require("../models/resturant");
 
-router.get("/", async (req, res) => {
+router.get("/get", async (req, res) => {
   try {
     const data = await Resturant.find();
     res.send(data);
@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/a", async (req, res) => {
+router.post("/put", async (req, res) => {
   const data = new Resturant({
     name: req.body.name,
   });

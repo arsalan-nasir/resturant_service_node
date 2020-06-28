@@ -16,6 +16,6 @@ db.once("open", () => console.log("Connected to DataBase"));
 app.use(express.json());
 
 const returantRoutes = require("./routes/resturant");
-app.use("/", returantRoutes);
+app.use("/resturants", returantRoutes);
 
 app.listen(3000, () => console.log("Server Started at Port 3000"));
