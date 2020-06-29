@@ -30,6 +30,7 @@ app.use(express.json());
 
 app.get("/", resturantController.getAllData);
 app.post("/put", resturantController.postData);
+app.delete("/:id", resturantController.removeDataById);
 
 app.listen(config.port, () =>
   console.log("Server Started at Port " + config.port)
