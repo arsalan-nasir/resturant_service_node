@@ -4,7 +4,15 @@ const resturantScheme = new mongoose.Schema({
   _id: {
     type: Number,
   },
-  name: {
+  code: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  location: {
     type: String,
     required: true,
   },
