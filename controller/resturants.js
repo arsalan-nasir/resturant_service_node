@@ -9,11 +9,39 @@ exports.getAllData = async function (req, res) {
   }
 };
 
+exports.updateById = async function (req, res) {
+  try {
+    await Resturants.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      (err, result) => {
+        if (err) res.status(500).json(err);
+        res.status(200).json(result);
+      }
+    );
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getDataById = async function (req, res) {
+  try {
+    await Resturants.findById(req.params.id, (err, result) => {
+      if (err) res.status(500).json(err);
+      res.status(200).json(result);
+    });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
 exports.postData = async function (req, res) {
   const no = Math.floor(Math.random() * 10000);
   const data = new Resturants({
     _id: no,
-    name: req.body.name,
+    title: req.body.title,
+    location: req.body.location,
+    code: req.body.code,
   });
   try {
     const result = await data.save();
@@ -31,5 +59,14 @@ exports.removeDataById = async function (req, res) {
     });
   } catch (err) {
     if (err) throw err;
+  }
+};
+
+exports.getResturantsByLocation = async function (req, res) {
+  try {
+    const result = await Resturants.find({ location: req.query.location });
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };

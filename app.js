@@ -29,9 +29,19 @@ mongoose.connect(config.mongo.uri, options).then(
 app.use(express.json());
 
 app.get("/resturants/getAllResturants", resturantController.getAllData);
+app.get(
+  "/resturants/getResturantsByLocation",
+  resturantController.getResturantsByLocation
+);
+app.get("/resturants/getResturantsById/:id", resturantController.getDataById);
 app.post("/resturants/addResturant", resturantController.postData);
+app.patch(
+  "/resturants/updateResturantsById/:id",
+  resturantController.updateById
+);
 app.delete("/resturants/:id", resturantController.removeDataById);
 
+//#########################
 app.listen(config.port, () =>
   console.log("Server Started at Port " + config.port)
 );
