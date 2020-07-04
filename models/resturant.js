@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
 const resturantScheme = new mongoose.Schema({
-  _id: {
-    type: Number,
-  },
   code: {
     type: String,
     required: true,
@@ -13,6 +10,10 @@ const resturantScheme = new mongoose.Schema({
     required: true,
   },
   location: {
+    type: String,
+    required: true,
+  },
+  category: {
     type: String,
     required: true,
   },

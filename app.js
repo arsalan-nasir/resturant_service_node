@@ -34,6 +34,10 @@ app.get(
   resturantController.getResturantsByLocation
 );
 app.get("/resturants/getResturantsById/:id", resturantController.getDataById);
+app.get(
+  "/resturants/getResturantsByCategory",
+  resturantController.getDataByCategory
+);
 app.post("/resturants/addResturant", resturantController.postData);
 app.patch(
   "/resturants/updateResturantsById/:id",
