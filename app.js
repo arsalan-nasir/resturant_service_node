@@ -38,7 +38,12 @@ app.get(
   "/resturants/getResturantsByCategory",
   resturantController.getDataByCategory
 );
+app.get(
+  "/resturants/menu/getByResturants/:id",
+  resturantController.getMenuByResturants
+);
 app.post("/resturants/addResturant", resturantController.postData);
+app.post("/resturants/menu/add/:id", resturantController.postMenu);
 app.patch(
   "/resturants/updateResturantsById/:id",
   resturantController.updateById
