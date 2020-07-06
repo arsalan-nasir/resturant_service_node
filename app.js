@@ -18,19 +18,14 @@ const options = {
   useUnifiedTopology: true,
 };
 
-mongoose
-  .connect(
-    "mongodb+srv://resturant-services:Pakistan@12@cluster0.r2rc6.mongodb.net/resturant-services?retryWrites=true&w=majority",
-    options
-  )
-  .then(
-    () => {
-      console.log("Database connection established!");
-    },
-    (err) => {
-      console.log("Error connecting Database instance due to: ", err);
-    }
-  );
+mongoose.connect(config.mongo.uri, options).then(
+  () => {
+    console.log("Database connection established!");
+  },
+  (err) => {
+    console.log("Error connecting Database instance due to: ", err);
+  }
+);
 
 app.use(express.json());
 
