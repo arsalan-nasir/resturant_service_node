@@ -117,7 +117,11 @@ exports.getMenuByResturants = async function (req, res) {
   try {
     await Menu.findById(req.params.id, (err, result) => {
       if (err) res.status(500).json(err);
-      res.status(200).json(result);
+      if (result.category.length > 0) {
+        res.status(200).json(result.category[0][req.params.type]);
+      } else {
+        res.status(200).json(result);
+      }
     });
   } catch (err) {
     res.status(400).json({ message: err.message });

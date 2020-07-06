@@ -40,7 +40,7 @@ app.get(
   resturantController.getDataByCategory
 );
 app.get(
-  "/resturants/menu/getByResturants/:id",
+  "/resturants/menu/getByResturants/:id/:type",
   resturantController.getMenuByResturants
 );
 app.post("/resturants/addResturant", resturantController.postData);
