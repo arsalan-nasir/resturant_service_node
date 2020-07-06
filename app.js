@@ -1,5 +1,5 @@
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
-
+const PORT = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -45,12 +45,10 @@ app.get(
 app.post("/resturants/addResturant", resturantController.postData);
 app.post("/resturants/menu/add/:id", resturantController.postMenu);
 app.patch(
-  "/resturants/updateResturantsById/:id", 
+  "/resturants/updateResturantsById/:id",
   resturantController.updateById
 );
 app.delete("/resturants/:id", resturantController.removeDataById);
 
 //#########################
-app.listen(config.port, () =>
-  console.log("Server Started at Port " + config.port)
-);
+app.listen(PORT, () => console.log("Server Started at Port " + PORT));
