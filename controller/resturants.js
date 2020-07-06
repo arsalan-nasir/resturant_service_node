@@ -14,7 +14,7 @@ exports.getAllData = async function (req, res) {
   try {
     const result = await Resturants.find()
       .limit(Size)
-      // .sort({ [sort.split(",")[0]]: `${sort.split(",")[1]}` });
+      .sort({ [sort.split(",")[0]]: `${sort.split(",")[1]}` });
     const data = { result, pageable };
     res.status(200).json(data);
   } catch (err) {
@@ -83,7 +83,7 @@ exports.removeDataById = async function (req, res) {
   try {
     Resturants.findByIdAndRemove(req.params.id, (err, result) => {
       if (err) res.status(500).json(err);
-      res.status(200).json("Succesfully Delted Data of ID : " + result._id);
+      res.status(200).send(result);
     });
   } catch (err) {
     if (err) throw err;
@@ -103,7 +103,6 @@ exports.postMenu = async function (req, res) {
   try {
     const category = { category: req.body };
     console.log(category);
-    console.log("????????//", req.params.id);
     await Menu.findByIdAndUpdate(req.params.id, category, (err, result) => {
       console.log(result);
       if (err) res.status(500).json(err);
@@ -111,7 +110,7 @@ exports.postMenu = async function (req, res) {
     });
   } catch (error) {
     res.status(400).json({ message: error.message });
-  } 
+  }
 };
 
 exports.getMenuByResturants = async function (req, res) {
