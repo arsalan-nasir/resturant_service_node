@@ -14,7 +14,7 @@ exports.getAllData = async function (req, res) {
   try {
     const result = await Resturants.find()
       .limit(Size)
-      .sort({ [sort.split(",")[0]]: `${sort.split(",")[1]}` });
+      // .sort({ [sort.split(",")[0]]: `${sort.split(",")[1]}` });
     const data = { result, pageable };
     res.status(200).json(data);
   } catch (err) {
