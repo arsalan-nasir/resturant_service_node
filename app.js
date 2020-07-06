@@ -17,7 +17,7 @@ const options = {
   useFindAndModify: false,
   useUnifiedTopology: true,
 };
-mongoose.connect(process.env.MONGOLAB_URI || config.mongo.uri, options).then(
+mongoose.connect(process.env.MONGODB_URI || config.mongo.uri, options).then(
   () => {
     console.log("Database connection established!");
   },
