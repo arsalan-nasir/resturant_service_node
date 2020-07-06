@@ -111,7 +111,7 @@ exports.postMenu = async function (req, res) {
     });
   } catch (error) {
     res.status(400).json({ message: error.message });
-  }
+  } 
 };
 
 exports.getMenuByResturants = async function (req, res) {

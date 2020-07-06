@@ -45,7 +45,7 @@ app.get(
 app.post("/resturants/addResturant", resturantController.postData);
 app.post("/resturants/menu/add/:id", resturantController.postMenu);
 app.patch(
-  "/resturants/updateResturantsById/:id",
+  "/resturants/updateResturantsById/:id", 
   resturantController.updateById
 );
 app.delete("/resturants/:id", resturantController.removeDataById);

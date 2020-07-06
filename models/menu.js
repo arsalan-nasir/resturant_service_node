@@ -6,7 +6,7 @@ const menuSchema = new mongoose.Schema({
     required: true,
   },
   category: {
-    type: Array,
+    type: Array, 
     required: true,
   },
 });
